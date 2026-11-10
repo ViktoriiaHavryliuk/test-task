@@ -1,0 +1,19 @@
+# Copy to terraform.tfvars and fill in.
+
+region             = "eu-central-1"
+availability_zones = ["eu-central-1a", "eu-central-1b"] # or one AZ for a cheaper POC
+
+# PCI 1.3.1: the finite list of client ranges allowed to reach the ALB.
+allowed_client_cidrs = [
+  "203.0.113.0/24",
+  "198.51.100.7/32",
+]
+
+# Existing certificate attached to the ALB.
+acm_certificate_arn = "arn:aws:acm:eu-central-1:123456789012:certificate/00000000-0000-0000-0000-000000000000"
+
+# Pre-baked AMI with MySQL/MariaDB installed and enabled.
+db_ami_id = "ami-0123456789abcdef0"
+
+# Package the app must install at boot (reached through the firewall).
+app_package_url = "https://example.com/packages/app-1.0.0.rpm"
